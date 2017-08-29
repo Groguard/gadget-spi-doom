@@ -2,35 +2,30 @@ spec: "0.0"
 name: gadget-spi-doom
 uuid: cc89e80a-72f5-4ab2-861f-7edd16d95e4b
 type: docker
+rootfs:
+  from: chippro
+  hash: nextthingco/gadget-build-chippro-unstable:2017-08-24-8513b6e2
 onboot:
-- name: spi-loader
-  uuid: b383b3dc-69b1-4676-add2-3a25ef77bcfc
-  image: ''
-  directory: gadget-spi-loader
-  net: ''
-  readonly: false
-  command: []
-  binds: ['/sys:/sys']
-  capabilities: ['SYS_RAWIO']
-  devices: []
 - name: module-loader
   uuid: 2da8f00d-2daf-4e4b-b62e-894a15ebfa14
-  image: ''
+  image: ""
   directory: module-loader
-  net: ''
+  net: ""
   readonly: false
+  forking: false
   command: []
   binds: ['/sys:/sys', '/lib/modules:/lib/modules']
-  capabilities: ['SYS_RAWIO', 'SYS_MODULE']
+  capabilities: [SYS_RAWIO, SYS_MODULE]
   devices: []
 services:
 - name: doom
   uuid: 550b60ab-4ec6-48ad-9efc-d0cc42d5ecac
-  image: ''
+  image: ""
   directory: doom
-  net: ''
+  net: ""
   readonly: false
+  forking: false
   command: []
   binds: []
-  capabilities: ['SYS_TTY_CONFIG', 'SYS_RAWIO']
-  devices: ['/dev/fb0', '/dev/tty0', '/dev/tty2', '/dev/snd', '/dev/input']
+  capabilities: [SYS_TTY_CONFIG, SYS_RAWIO]
+  devices: [/dev/fb0, /dev/tty0, /dev/tty2, /dev/snd, /dev/input]
